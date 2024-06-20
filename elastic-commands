@@ -7,6 +7,19 @@ curl -u elastic:cbsjskd7253nms -X GET "localhost:8200/_cat/indices?v"
 ## delete index
 curl -u elastic:cbsjskd7253nms -X DELETE "localhost:8200/state_staging_test1"
 
+
+## create user
+
+curl -u elastic:cbsjskd7253nms -X POST "localhost:8200/_security/user/dev_user" -H "Content-Type: application/json" -d'
+{
+  "password" : "vjh287enxja2",
+  "roles" : [ "superuser" ],
+  "full_name" : "Developer User",
+  "email" : "dev_user@example.com"
+}'
+
+
+##
 ### elastic dump
 
 Check index
