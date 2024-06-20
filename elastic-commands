@@ -4,6 +4,9 @@ curl -u elastic:cbsjskd7253nms -X GET "localhost:8200/_cluster/health?pretty"
 ## check current index
 curl -u elastic:cbsjskd7253nms -X GET "localhost:8200/_cat/indices?v"
 
+## delete index
+curl -u elastic:cbsjskd7253nms -X DELETE "localhost:8200/state_staging_test1"
+
 ### elastic dump
 
 Check index
