@@ -4,17 +4,15 @@ mkdir -p elasticsearch/data
 cat elasticsearch/config/elasticsearch.yml
 
 ##
-cluster.name: "docker-cluster"
+cluster.name:    "stage-cluster"
+
+
 network.host: 0.0.0.0
-xpack.security.enabled: true
 
-##
+http.port: 9200
 
-cat elasticsearch/config/jvm.options
+bootstrap.memory_lock: true
 
-##
--Xms1500m
--Xmx1500m
 ##
 
 cat docker-compose.yml
@@ -25,19 +23,20 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
     container_name: elasticsearch
+    ports:
+      - "8200:9200"
     environment:
+      - ELASTIC_PASSWORD=123change
       - discovery.type=single-node
       - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=jncjslsnc382a # Set the password for the elastic user
-    volumes:
-      - ~/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ~/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
-      - ~/elasticsearch/data:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
+      - path.data=/usr/share/elasticsearch/data
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
 ##
