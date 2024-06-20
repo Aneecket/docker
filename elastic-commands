@@ -1,0 +1,2 @@
+# check cluster status
+curl -u elastic:cbsjskd7253nms -X GET "localhost:8200/_cluster/health?pretty"
