@@ -1,5 +1,6 @@
 mkdir -p elasticsearch/config
 mkdir -p elasticsearch/data
+chmod -R 777  elasticsearch/data
 
 cat elasticsearch/config/elasticsearch.yml
 
