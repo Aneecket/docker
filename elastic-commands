@@ -1,2 +1,37 @@
 # check cluster status
 curl -u elastic:cbsjskd7253nms -X GET "localhost:8200/_cluster/health?pretty"
+
+
+### elastic dump
+
+Check index
+curl  -u elastic:"El@stIcpsw"  -X GET "10.40.42.126:9200/_cat/indices?v"
+
+npm install elasticdump -g
+
+elasticdump \
+  --input=http://"elastic":"El@stIcpsw"@10.40.42.126:9200/rules_test \
+  --output=http://10.40.42.225:9200/rules_test \
+  --type=analyzer
+elasticdump \
+  --input=http://user:password@10.40.42.126:9200/rules_test \
+  --output=http://10.40.42.225:9200/rules_test \
+  --type=mapping
+elasticdump \
+  --input=http://user:password@10.40.42.126:9200/rules_test \
+  --output=http://10.40.42.225:9200/rules_test \
+  --type=data
+
+
+Install elasticdump via docker
+
+docker pull elasticdump/elasticsearch-dump
+
+docker run --rm -ti elasticdump/elasticsearch-dump \
+  --input=http://"elastic":"El@stIcpsw"@10.40.42.126:9200/rules_v1 \
+  --output=http://10.40.42.225:9200/rules_v1 \
+  --type=data
+
+
+
+#####
