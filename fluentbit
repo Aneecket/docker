@@ -19,3 +19,18 @@ kubectl create -f https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes
 
 
 Ref: https://docs.fluentbit.io/manual/v/1.0/installation/kubernetes
+
+
+## chnage in fluent config map
+  output-elasticsearch.conf: |
+    [OUTPUT]
+        Name            es
+        Match           *
+        Host            elk-elasic.insurancedekho.local
+        Port            9200
+        HTTP_User       elastic
+        HTTP_Passwd     sdbjcsajh2qsncda
+        Logstash_Format On
+        Replace_Dots    On
+        Retry_Limit     False
+        Suppress_Type_Name On
