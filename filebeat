@@ -76,7 +76,15 @@ fields:
        tags: ["mongo-replica1"]
 processors:
 - add_tags:
-    tags: [production]
+    tags: [gibpl-stage]
+    target: "environment"
+processors:
+- add_tags:
+    tags: [gibpl-prod]
+    target: "environment"
+processors:
+- add_tags:
+    tags: [ifm-prod]
     target: "environment"
 
 
