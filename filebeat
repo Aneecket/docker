@@ -89,3 +89,7 @@ processors:
 
 
 service filebeat restart
+
+cron: 
+0 * * * * /bin/truncate -s 0 /var/log/filebeat/filebeat
+
