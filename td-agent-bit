@@ -13,3 +13,6 @@ sudo rpm --import https://packages.fluentbit.io/fluentbit.key
 
 sudo yum install fluent-bit
 
+pip3 install awslogs
+
+
