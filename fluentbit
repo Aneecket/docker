@@ -31,6 +31,7 @@ Ref: https://docs.fluentbit.io/manual/v/1.0/installation/kubernetes
         HTTP_User       elastic
         HTTP_Passwd     sdbjcsajh2qsncda
         Logstash_Format On
+        Logstash_Prefix prod-insurance-app-log
         Replace_Dots    On
         Retry_Limit     False
         Suppress_Type_Name On
