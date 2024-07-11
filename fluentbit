@@ -34,3 +34,5 @@ Ref: https://docs.fluentbit.io/manual/v/1.0/installation/kubernetes
         Replace_Dots    On
         Retry_Limit     False
         Suppress_Type_Name On
+        Compress        gzip
+
