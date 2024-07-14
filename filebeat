@@ -52,12 +52,12 @@ vim /etc/filebeat/modules.d/mongodb.yml
 ## In filebeat.yml
 
 output.logstash:
-  hosts: ["172.50.3.73:7005"]
+  hosts: ["elk-elasic.insurancedekho.local:5445"]
   loadbalance: true
   compression_level: 3
   worker: 4
   bulk_max_size: 4096
-  pipelining: 2 #Increasing this did not seem to have any performance improvement.
+  pipelining: 2
 
 queue.mem:
   events: 65536
