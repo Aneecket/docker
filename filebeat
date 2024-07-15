@@ -49,7 +49,7 @@ vim /etc/filebeat/modules.d/mongodb.yml
 
 ###############################
 
-## In filebeat.yml
+## In /etc/filebeat/filebeat.yml
 
 output.logstash:
   hosts: ["elk-elasic.insurancedekho.local:5445"]
