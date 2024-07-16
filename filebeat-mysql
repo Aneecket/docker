@@ -94,3 +94,9 @@ service filebeat restart
 
 cron: 
 0 * * * * /bin/truncate -s 0 /var/log/filebeat/filebeat
+
+
+#### IN mysql
+slow_query_log=1
+long_query_time                 = 1
+slow-query-log-file             = /var/log/mariadb/slow-query.log
