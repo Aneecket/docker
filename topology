@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Fetch all service names in the default namespace
+services=$(kubectl get services -n default -o jsonpath='{.items[*].metadata.name}')
+
+# Loop through each service and apply the annotation
+for service in $services; do
+  kubectl patch service $service -n default --type merge -p '{"metadata": {"annotations": {"service.kubernetes.io/topology-mode": "auto"}}}'
+done
+
+
+
+######
+  annotations:
+    service.kubernetes.io/topology-mode: auto
