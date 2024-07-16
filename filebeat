@@ -26,6 +26,12 @@ filebeat test config -e
 filebeat -e -c filebeat.yml -d "publish"
 
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.3.2-x86_64.rpm
+
+## arm 
+wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.14.3-aarch64.rpm
+sudo rpm -vi filebeat-8.14.3-aarch64.rpm
+
+###
 sudo rpm -vi filebeat-7.3.2-x86_64.rpm
 chkconfig filebeat on
 filebeat modules list
