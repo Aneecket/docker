@@ -1,3 +1,5 @@
+## apply topogy
+
 #!/bin/bash
 
 # Fetch all service names in the default namespace
@@ -9,7 +11,19 @@ for service in $services; do
 done
 
 
+### remove topology
+#!/bin/bash
 
-######
+# Fetch all service names in the default namespace
+services=$(kubectl get services -n default -o jsonpath='{.items[*].metadata.name}')
+
+# Loop through each service and remove the topology-mode annotation
+for service in $services; do
+  kubectl patch service $service -n default --type merge -p '{"metadata": {"annotations": {"service.kubernetes.io/topology-mode": null}}}'
+done
+
+
+
+###### single service
   annotations:
     service.kubernetes.io/topology-mode: auto
