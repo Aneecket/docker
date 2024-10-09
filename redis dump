@@ -1,0 +1,27 @@
+redis-dump -d 5 -u redis://172.50.3.197:6379 > dump_db5.json
+
+
+redis-cli -h 172.50.3.197 -n 5 --scan --raw | xargs -I{} sh -c 'echo -n "{\"key\":\"{}\",\"ttl\":$(redis-cli -h 172.50.3.197  -n 5 ttl {}),\"value\":\"$(redis-cli -h 172.50.3.197 -n 5 dump {})\"},"' > dump_db5.json
+
+
+redis-cli -h 172.50.3.197 -n 5 --scan --raw | xargs redis-cli -h 172.50.3.197 -n 5 --raw dump | redis-cli -h 172.50.3.197 --pipe > temp.rdb
+
+
+redis-cli -h 172.50.3.197 -n 4 --rdb    redis_db4_dump.rdb
+
+
+redis_db4_dump.rdb
+
+
+npm install -g redis-dump
+redis-dump -h 172.50.4.114 -d 5 >> db5.rdb
+
+
+
+redis-cli -h brokerage-redis-stag.hfbgru.ng.0001.aps1.cache.amazonaws.com -p 6379 -n 10 --pipe   --pipe-timeout 0 < db5.rdb
+
+ 
+  --pipe-timeout
+
+
+yum install unix2dos
