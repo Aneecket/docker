@@ -34,6 +34,7 @@ services:
       KAFKA_MESSAGE_MAX_BYTES: 500000000   # Increase the max message size to 500MB
       KAFKA_REPLICA_FETCH_MAX_BYTES: 500000000   # Increase the max fetch size for replicas
     volumes:
+      - ./kafka-data:/kafka/logs
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - zookeeper
