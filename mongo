@@ -1,0 +1,3 @@
+DEST_SERVER="mongodb://mongoadmin:test@10.10.41.40:27017/?authSource=admin"
+BACKUP_DIR="/home/pradeep/partner_directory/mongodb3-backup"
+mongorestore --uri "$DEST_SERVER" --dir "$BACKUP_DIR"
