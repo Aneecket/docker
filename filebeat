@@ -1,3 +1,29 @@
+### new install
+# Download newer version (example: 7.17.13)
+rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+
+cat <<EOF | tee /etc/yum.repos.d/elastic-7.x.repo
+[elastic-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF
+
+# Install latest 7.x version
+yum install filebeat
+Then:
+
+
+systemctl daemon-reload
+systemctl enable filebeat
+systemctl start filebeat
+
+
+
 #######
 
 https://coralogix.com/log-analytics-blog/filebeat-configuration-best-practices-tutorial/
