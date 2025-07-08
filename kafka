@@ -38,3 +38,24 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - zookeeper
+
+
+
+
+
+
+####kafka-ui
+docker-compose.yml
+
+docker-compose.yml
+[root@ip-10-75-29-227 kafka-ui]# cat docker-compose.yml 
+version: '3'
+services:
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKER_CONNECT: 10.75.29.227:9092
+      JVM_OPTS: "-Xms512M -Xmx512M"
+      SERVER_PORT: 9000
